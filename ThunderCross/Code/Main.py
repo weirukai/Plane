@@ -6,26 +6,37 @@
 import pygame
 from code import *
 import time
+import tkinter
+from tkinter import *
+
+from pygame import surface
+
 """
-定义全局常量
+定义全局常量部分
 """
 PLAYER_HP = 200
 ENEMY_HP = 50
+ScreenWidth = 400
+ScreenHeight = 600
 # 定义屏幕常量
-SCREEN_RECT = pygame.Rect(30, 0, 700, 480)
+MODE = pygame.Rect(90, 30, ScreenWidth, ScreenHeight)
+
+# 加载所有用到的图像资源
+background = pygame.image.load("../images/background.png")
 
 
 class Game(object):
     def __init__(self):
-        self._screenWidth = 300
-        self._screenHeight = 600
-        pygame.display.set_mode(SCREEN_RECT.size)
+        self.screen = pygame.display.set_mode(MODE.size)
 
     def startGame(self):
-        pygame.init()
         while True:
+            # 主线程循环
+            pygame.init()
+            self.screen.blit(background, (0, 0))  # 贴背景图
+
             pygame.display.update()
-            time.sleep(200)
+            time.sleep(20000)
 
 
 if __name__ == '__main__':
