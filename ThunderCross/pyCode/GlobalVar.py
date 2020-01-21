@@ -1,5 +1,7 @@
 import pygame
 
+
+Speed=10
 PLAYER_HP = 200
 ENEMY_HP = 50
 ScreenWidth = 400

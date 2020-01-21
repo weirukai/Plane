@@ -25,16 +25,16 @@ class Game(object):
             # 主线程循环
             pygame.init()
             screen.blit(background, (0, 0))  # 贴背景图
-
+            myPlane.move()
             pygame.display.update()
-            time.sleep(200)
+
 
 
 class Draw(Thread):
     def run(self) -> None:
         while True:
             myPlane.drawPlane()
-            #time.sleep(10)
+            time.sleep(0.001)
 
 
 if __name__ == '__main__':
