@@ -1,8 +1,8 @@
-from pyCode.GlobalVar import screen, PLAYER_HP, ENEMY_HP, Speed
+from pyCode.GlobalVar import screen, PLAYER_HP, ENEMY_HP, Speed ,enemyPlaneGroup
 from pyCode.ImagesClass import Images
 import pygame
 from pygame.locals import *
-from sys import exit
+
 
 
 class Plane(Images):
@@ -39,3 +39,9 @@ class enemyPlane(Plane):
     def __init__(self, x: int, y: int, images_path: str):
         super().__init__(x, y, images_path)
         self.life = ENEMY_HP
+        enemyPlaneGroup.add(self)
+
+    @staticmethod
+    def drawEnemyPlane():
+        for enemyMember in enemyPlaneGroup:
+            enemyMember.drawPlane()

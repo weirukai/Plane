@@ -1,7 +1,7 @@
 from threading import Thread
 import pygame
 import time
-
+from pyCode.PlaneClass import enemyPlane
 from pygame.constants import QUIT, KEYDOWN, MOUSEBUTTONDOWN
 
 from pyCode import PlaneClass
@@ -34,6 +34,7 @@ class Game(object):
                     pass
 
     def startGame(self):
+
         while True:
             # 主线程循环
             pygame.init()
@@ -41,18 +42,30 @@ class Game(object):
             self.eventAddress()
             pygame.display.update()
 
+    # 生成敌方飞机
+    def createEnemyPlane(self):
+        enemyPlane(30,10,"../images/enemy2.png")
+
+
+
+
 
 class Draw(Thread):
     def run(self) -> None:
         while True:
+            # 绘制己方飞机
             myPlane.drawPlane()
+            # 绘制敌方飞机
+            enemyPlane.drawEnemyPlane()
             time.sleep(0.001)
 
 
 if __name__ == '__main__':
     print("游戏开始的地方")
     game = Game()
-
+    # game.createEnemyPlane()
+    enemyPlane(30, 10, "../images/enemy2.png")
+    enemyPlane(150, 10, "../images/enemy2.png")
     try:
         Draw().start()
     except InterruptedError:

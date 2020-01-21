@@ -12,3 +12,6 @@ MODE = pygame.Rect(90, 30, ScreenWidth, ScreenHeight)
 screen = pygame.display.set_mode(MODE.size)
 
 myPlane = None
+
+enemyPlaneGroup = pygame.sprite.Group()
+
