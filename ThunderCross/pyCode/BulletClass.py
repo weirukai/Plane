@@ -1,7 +1,7 @@
 """
 子弹类，子弹的属性以及子弹的对应的方法
 """
-from Code.ImagesClass import Images
+from pyCode.ImagesClass import Images
 
 
 class Bullet(Images):
