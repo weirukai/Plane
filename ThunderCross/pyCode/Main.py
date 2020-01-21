@@ -2,6 +2,8 @@ from threading import Thread
 import pygame
 import time
 
+from pygame.constants import QUIT, KEYDOWN, MOUSEBUTTONDOWN
+
 from pyCode import PlaneClass
 from pyCode import GlobalVar
 from pyCode.GlobalVar import screen, myPlane
@@ -20,14 +22,24 @@ class Game(object):
         pass
         # self.myPlane:PlaneClass.playerPlane=None
 
+    def eventAddress(self):
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                exit()
+            else:
+                if event.type == KEYDOWN:
+                    myPlane.move(event.key)
+                if event.type == MOUSEBUTTONDOWN:
+                    # 预留给鼠标处理的
+                    pass
+
     def startGame(self):
         while True:
             # 主线程循环
             pygame.init()
             screen.blit(background, (0, 0))  # 贴背景图
-            myPlane.move()
+            self.eventAddress()
             pygame.display.update()
-
 
 
 class Draw(Thread):
@@ -47,6 +59,3 @@ if __name__ == '__main__':
         print("线程错误")
 
     game.startGame()
-
-
-
